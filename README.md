@@ -1,2 +1,2 @@
 # gallery
-Date: 19th Nov, 2022.
+Date: 19/11/2022.
