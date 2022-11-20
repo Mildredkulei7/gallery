@@ -1,1 +1,1 @@
-web: ./build/install/todo/bin/todo
+web: web:node index.js
