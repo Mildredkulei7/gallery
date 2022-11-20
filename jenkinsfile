@@ -24,6 +24,7 @@ pipeline {
     stage('Tests') {
       steps { 
         sh 'gradle test'
+        junit 'serverTest.js'
       }
     }
     stage('Deploy to Heroku') {
