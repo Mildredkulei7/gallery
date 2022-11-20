@@ -4,6 +4,13 @@ pipeline {
    gradle 'Gradle-6'
   }
   stages { 
+    stage('NPM install') {
+      steps { 
+        nodejs('Node-10.17'){
+            sh 'npm install'
+        }
+      }
+    }
     stage('clone repository') {
       steps { 
         git 'https://github.com/Mildredkulei7/gallery'
@@ -19,5 +26,12 @@ pipeline {
         sh 'gradle test'
       }
     }
+    stage('Deploy to Heroku') {
+  steps {
+    withCredentials([usernameColonPassword(credentialsId: 'Heroku', variable: 'HEROKU_CREDENTIALS' )]){
+      sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/still-dawn-10406.git master'
+    }
   }
+} 
+}
 }
